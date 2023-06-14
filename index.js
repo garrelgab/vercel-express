@@ -2,7 +2,7 @@ const express = require('express')
 const mysql = require('mysql');
 const app = express()
 const PORT = 4000
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 app.listen(PORT, () => {
   console.log(`API listening on PORT ${PORT} `)
@@ -44,37 +44,38 @@ app.post("/login", (req, res) => {
     "SELECT * FROM tbl_accounts WHERE email = ? AND status = 'Active'",
     [userEmail],
     (err, result) => {
-      if (err) {
-        res.send({ err: err });
-      } else if (result.length > 0) {
-        const hashedPassword = result[0].password;
-        bcrypt.compare(userPassword, hashedPassword, (err, isMatch) => {
-          if (err) {
-            res.send({ err: err });
-          } else if (isMatch) {
-            const accountId = result[0].account_id;
-            connection.query(
-              "SELECT fname FROM tbl_account_info WHERE account_info_id = ?",
-              [accountId],
-              (err, accountInfoResult) => {
-                if (err) {
-                  res.send({ err: err });
-                } else if (accountInfoResult.length > 0) {
-                  const firstName = accountInfoResult[0].fname;
-                  // Insert fname into tbl_attendance
-                  res.send(result);
-                } else {
-                  res.send({ message: "Incorrect username/password." });
-                }
-              }
-            );
-          } else {
-            res.send({ message: "Incorrect username/password." });
-          }
-        });
-      } else {
-        res.send({ message: "Account not found or inactive." });
-      }
+      res.send({ message: result });
+      // if (err) {
+      //   res.send({ err: err });
+      // } else if (result.length > 0) {
+      //   const hashedPassword = result[0].password;
+      //   bcrypt.compare(userPassword, hashedPassword, (err, isMatch) => {
+      //     if (err) {
+      //       res.send({ err: err });
+      //     } else if (isMatch) {
+      //       const accountId = result[0].account_id;
+      //       connection.query(
+      //         "SELECT fname FROM tbl_account_info WHERE account_info_id = ?",
+      //         [accountId],
+      //         (err, accountInfoResult) => {
+      //           if (err) {
+      //             res.send({ err: err });
+      //           } else if (accountInfoResult.length > 0) {
+      //             const firstName = accountInfoResult[0].fname;
+      //             // Insert fname into tbl_attendance
+      //             res.send(result);
+      //           } else {
+      //             res.send({ message: "Incorrect username/password." });
+      //           }
+      //         }
+      //       );
+      //     } else {
+      //       res.send({ message: "Incorrect username/password." });
+      //     }
+      //   });
+      // } else {
+      //   res.send({ message: "Account not found or inactive." });
+      // }
     }
   );
 });
