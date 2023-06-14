@@ -47,8 +47,8 @@ app.post("/login", (req, res) => {
       if (err) {
         res.send({ err: "error po" });
       } else if (result.length > 0) {
-        const hashedPassword = result[0].password;
-        res.send({ message: hashedPassword });
+        // const hashedPassword = result[0].password;
+        // res.send({ message: hashedPassword });
         // bcrypt.compare(userPassword, hashedPassword, (err, isMatch) => {
         //   if (err) {
         //     res.send({ err: err });
