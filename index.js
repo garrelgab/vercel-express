@@ -23,6 +23,7 @@ const connection = mysql.createPool({
   password: '8U5oGzb!B', // this is the default password for XAMPP
   database: 'u994941609_db_adamfitness', // replace with the name of your database
 });
+
 app.use(express.json());
 
 app.get("/members", (req, res) => {
@@ -37,49 +38,6 @@ app.get("/members", (req, res) => {
 });
 
 
-app.post("/login", (req, res) => {
-  const userEmail = req.body.userEmail;
-  const userPassword = req.body.userPassword;
-  connection.query(
-    "SELECT * FROM tbl_accounts WHERE email = ? AND status = 'Active'",
-    [userEmail],
-    (err, result) => {
-      return 'only'
-      // res.send({ err: "error po" });
-      // if (err) {
-      //   res.send({ err: "error po" });
-      // } else if (result.length > 0) {
-      //   const hashedPassword = result[0].password;
-      //   bcrypt.compare(userPassword, hashedPassword, (err, isMatch) => {
-      //     if (err) {
-      //       res.send({ err: err });
-      //     } else if (isMatch) {
-      //       const accountId = result[0].account_id;
-      //       connection.query(
-      //         "SELECT fname FROM tbl_account_info WHERE account_info_id = ?",
-      //         [accountId],
-      //         (err, accountInfoResult) => {
-      //           if (err) {
-      //             res.send({ err: err });
-      //           } else if (accountInfoResult.length > 0) {
-      //             const firstName = accountInfoResult[0].fname;
-      //             // Insert fname into tbl_attendance
-      //             res.send(result);
-      //           } else {
-      //             res.send({ message: "Incorrect username/password." });
-      //           }
-      //         }
-      //       );
-      //     } else {
-      //       res.send({ message: "Incorrect username/password." });
-      //     }
-      //   });
-      // } else {
-      //   res.send({ message: "Account not found or inactive." });
-      // }
-    }
-  );
-});
 
 
 module.exports = connection
