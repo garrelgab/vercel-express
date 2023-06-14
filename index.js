@@ -2,7 +2,7 @@ const express = require('express')
 const mysql = require('mysql');
 const app = express()
 const PORT = 4000
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 app.listen(PORT, () => {
   console.log(`API listening on PORT ${PORT} `)
