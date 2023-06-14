@@ -1,52 +1,52 @@
-// const express = require('express')
+const express = require('express')
 
-// const app = express()
-// const PORT = 4000
+const app = express()
+const PORT = 4000
 
-// app.listen(PORT, () => {
-//   console.log(`API listening on PORT ${PORT} `)
-// })
+app.listen(PORT, () => {
+  console.log(`API listening on PORT ${PORT} `)
+})
 
-// app.get('/', (req, res) => {
-//   res.send('Hey this is my API running 🥳')
-// })
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
 
-// app.get('/about', (req, res) => {
-//   res.send('This is my about route..... ')
-// })
+app.get('/about', (req, res) => {
+  res.send('This is my about route..... ')
+})
 
 
 // module.exports = app
 
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const qrcode = require('qrcode');
-const moment = require('moment');
-const app = express();
-const bcrypt = require('bcrypt');
-const port = 5050;
-const mysql = require('mysql');
+// const cors = require('cors');
+// const bodyParser = require('body-parser');
+// const express = require('express');
+// const cookieParser = require('cookie-parser');
+// const qrcode = require('qrcode');
+// const moment = require('moment');
+// const app = express();
+// const bcrypt = require('bcrypt');
+// const port = 5050;
+// const mysql = require('mysql');
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+//   res.header("Access-Control-Allow-Headers", "Content-Type");
+//   res.header("Access-Control-Allow-Credentials", "true");
+//   next();
+// });
 
-const connection = mysql.createPool({
-  host: 'srv608.hstgr.io',
-  user: 'u994941609_root', // this is the default username for XAMPP
-  password: '8U5oGzb!B', // this is the default password for XAMPP
-  database: 'u994941609_db_adamfitness', // replace with the name of your database
-});
+// const connection = mysql.createPool({
+//   host: 'srv608.hstgr.io',
+//   user: 'u994941609_root', // this is the default username for XAMPP
+//   password: '8U5oGzb!B', // this is the default password for XAMPP
+//   database: 'u994941609_db_adamfitness', // replace with the name of your database
+// });
 
-app.get('/test', (req, res) => {
-  res.send('Test Route');
-});
+// app.get('/test', (req, res) => {
+//   res.send('Test Route');
+// });
 
 
 // app.use(express.json());
