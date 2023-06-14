@@ -44,7 +44,8 @@ app.post("/login", (req, res) => {
     "SELECT * FROM tbl_accounts WHERE email = ? AND status = 'Active'",
     [userEmail],
     (err, result) => {
-      res.send({ err: "error po" });
+      return 'only'
+      // res.send({ err: "error po" });
       // if (err) {
       //   res.send({ err: "error po" });
       // } else if (result.length > 0) {
