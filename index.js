@@ -119,4 +119,4 @@ app.get('/test', (req, res) => {
 //   console.log(`Server running on port ${port}`);
 // });
 
-module.exports = connection;
+module.exports = app;
