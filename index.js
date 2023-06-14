@@ -24,7 +24,6 @@ const connection = mysql.createPool({
   database: 'u994941609_db_adamfitness', // replace with the name of your database
 });
 
-app.use(express.json());
 
 app.get("/members", (req, res) => {
   connection.query("select account_info_id, fname, lname, age, gender, DATE_FORMAT(bday, '%M %d, %Y') as bday, email, DATE_FORMAT(date_created, '%M %d, %Y') as date_created, status from tbl_account_info where role = 'customer'", (err, result) => {
